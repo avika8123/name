@@ -1,1 +1,153 @@
+import RPi.GPIO as GPIO
+import time
 
+red_1 = 13
+orange_1 = 12
+green_1 = 11
+red_2 = 10
+orange_2 = 9
+green_2 = 8
+red_3 = 7
+orange_3 = 6
+green_3 = 5
+red_4 = 4
+orange_4 = 3
+green_4 = 2
+
+GPIO.setmode(GPIO.BCM)
+
+for pin in [red_1, orange_1, green_1, red_2, orange_2, green_2, red_3, orange_3, green_3, red_4, orange_4, green_4]:
+    GPIO.setup(pin, GPIO.OUT)
+
+def direction_1_green():
+    GPIO.output(red_1, GPIO.LOW)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.HIGH)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_2_orange():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.LOW)
+    GPIO.output(orange_2, GPIO.HIGH)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_2_green():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.LOW)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.HIGH)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_3_orange():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.LOW)
+    GPIO.output(orange_3, GPIO.HIGH)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_3_green():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.LOW)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.HIGH)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_4_orange():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.LOW)
+    GPIO.output(orange_4, GPIO.HIGH)
+    GPIO.output(green_4, GPIO.LOW)
+
+def direction_4_green():
+    GPIO.output(red_1, GPIO.HIGH)
+    GPIO.output(orange_1, GPIO.LOW)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.LOW)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.HIGH)
+
+def direction_1_orange():
+    GPIO.output(red_1, GPIO.LOW)
+    GPIO.output(orange_1, GPIO.HIGH)
+    GPIO.output(green_1, GPIO.LOW)
+    GPIO.output(red_2, GPIO.HIGH)
+    GPIO.output(orange_2, GPIO.LOW)
+    GPIO.output(green_2, GPIO.LOW)
+    GPIO.output(red_3, GPIO.HIGH)
+    GPIO.output(orange_3, GPIO.LOW)
+    GPIO.output(green_3, GPIO.LOW)
+    GPIO.output(red_4, GPIO.HIGH)
+    GPIO.output(orange_4, GPIO.LOW)
+    GPIO.output(green_4, GPIO.LOW)
+
+try:
+    while True:
+        direction_1_green()
+        time.sleep(5)
+        direction_2_orange()
+        time.sleep(3)
+        direction_2_green()
+        time.sleep(5)
+        direction_3_orange()
+        time.sleep(3)
+        direction_3_green()
+        time.sleep(5)
+        direction_4_orange()
+        time.sleep(3)
+        direction_4_green()
+        time.sleep(5)
+        direction_1_orange()
+        time.sleep(3)
+except KeyboardInterrupt:
+    GPIO.cleanup()
